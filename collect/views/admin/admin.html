@@ -1,0 +1,44 @@
+<body ng-controller="LoginController">
+    <br>
+    
+    <div class="text-info">
+    <div login-dialog ng-if="!isLoginPage"></div>
+<div ng-if="currentUser">Welcome, {{ currentUser.user_id}}</div>
+
+<div ng-if="isAuthorized(userRoles.admin)">You're logged as admin.</div><div  class="col-md-1 col-md-offset-11"><a href="#/logout" class="btn btn-danger" ng-click="logout()" >Logout</a>  </div>
+<div class="row">
+<div ng-switch on="currentUser.role" class="col-md-2">
+  <div ng-switch-when="userRoles.adm ">You're admin.</div>
+  <div ng-switch-when="userRoles.com  ">You're comm User.</div>
+     
+</div>
+     
+    </div>
+    </div>
+  
+
+<div class="row" ng-controller="adminController">
+     
+
+    <div class="col-md-12">
+        <h5>Admin Panel</h5>
+
+        <tabset>    
+            <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" ng-click="clickTab(tab.template)" disabled="tab.disabled">
+                <br/>
+
+            </tab>
+        </tabset>
+
+
+
+ <div ui-view  >
+</div>
+
+
+    </div>
+
+
+</div>
+    
+    </body>
